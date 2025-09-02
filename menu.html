@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Меню</title>
+  <style>
+    @font-face {
+      font-family: "Oswald";
+      src: url("fonts/Oswald-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: "Oswald", sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center; /* вертикальный центр */
+      background: url("images/bg.png") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Меню слева */
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 100px 50px;
+      flex-shrink: 0; 
+      width: 300px; 
+    }
+
+    .btn {
+      font-size: 48px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      color: #ffcc00;
+      transform: translateX(15px);
+    }
+
+    /* iframe справа по центру */
+    #gameFrame {
+      flex-shrink: 0;
+      width: 70%; /* можно подкорректировать ширину */
+      height: 70%; /* высота по середине экрана */
+      display: none; 
+      border: none;
+      margin-left: 20px; /* отступ от меню */
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <a href="#" class="btn" id="playBtn">Играть</a>
+    <a href="#" class="btn">Настройки</a>
+    <a href="close.html" class="btn">Выход</a>
+  </div>
+
+  <iframe id="gameFrame" src="game/levels.html"></iframe>
+
+  <script>
+    const playBtn = document.getElementById("playBtn");
+    const gameFrame = document.getElementById("gameFrame");
+
+    playBtn.addEventListener("click", (e) => {
+      e.preventDefault(); 
+      gameFrame.style.display = "block"; // показываем iframe
+    });
+  </script>
+</body>
+</html>
